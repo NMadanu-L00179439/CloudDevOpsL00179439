@@ -1,11 +1,7 @@
-# Words Counter and Paragraphs Counter Flask App using Python
-
 from flask import Flask,request,render_template
 from datetime import date
 
-#### Defining Flask App
 app = Flask(__name__)
-
 
 #### Saving Date today in 2 different formats
 dateThisDay = date.today().strftime("%m_%d_%y")
@@ -16,11 +12,9 @@ def restore_thelines(text):
     lines = [line for line in lines if line.strip()]
     return len(lines)
 
-################## ROUTING FUNCTIONS #########################
-
-#### Our main page
 @app.route('/')
 def home():
+ #   return '<h1>Hello from Flask & Docker</h2>'
     return render_template('home.html',dateThisDay2=dateThisDay2) 
 
 #### This function will run when we add a new user
@@ -39,6 +33,5 @@ def count():
     return render_template('home.html',words=words,paras=paras,chars=chars,dateThisDay2=dateThisDay2) 
 
 
-#### Our main function which runs the Flask App
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
